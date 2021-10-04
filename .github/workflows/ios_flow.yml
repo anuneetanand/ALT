@@ -26,7 +26,7 @@ jobs:
           IOS_DEV_SECRET: ${{secrets.IOS_DEV_SECRET}}
         run: echo $IOS_DEV_SECRET > App/ios/GoogleServices-Info.plist
         
-      - name:
+      - name: BUNDLE Ios-Release
         run: |
           cd App && npm react-native bundle --platform ios --dev false --entry-file index.js --bundle-output ios/main.jsbundle --assets-dest ios
           
