@@ -16,7 +16,7 @@ jobs:
            npm install -g react-native-cli
       - name: Install npm dependencies 
         run: |
-          cd App && npm install --legacy-peer-deps
+          cd App && npm install --legacy-peer-deps && xcode-select -p
       - name: Decode config.json
         env:
           CONFIG_SECRET: ${{ secrets.CONFIG_SECRET}}
@@ -25,13 +25,15 @@ jobs:
         env: 
           IOS_DEV_SECRET: ${{secrets.IOS_DEV_SECRET}}
         run: echo $IOS_DEV_SECRET > App/ios/GoogleServices-Info.plist
-        
-      - name: BUNDLE Ios-Release
-        run: |
-          cd App && npm react-native bundle --platform ios --dev false --entry-file index.js --bundle-output ios/main.jsbundle --assets-dest ios
           
       - name: install Pods
         run: cd App && cd ios && pod install
+        
+      - name: Build iOS (debug)
+        run: cd App && cd ios && xcodebuild -workspace ios/TLS.xcworkspace -scheme TLS clean archive -sdk iphoneos -configuration Debug -UseModernBuildSystem=NO -archivePath $PWD/TLS CODE_SIGNING_ALLOWED=NO
+            
+
+      
       
       
       
