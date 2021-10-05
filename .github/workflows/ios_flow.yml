@@ -30,7 +30,7 @@ jobs:
         run: cd App && cd ios && pod install
         
       - name: Build iOS (debug)
-        run: cd App && cd ios && xcodebuild -workspace TLS.xcworkspace -scheme TLS clean archive -sdk iphoneos -configuration Debug -UseModernBuildSystem=NO -archivePath $PWD/TLS CODE_SIGNING_ALLOWED=NO
+        run: cd App && cd ios && xcodebuild -workspace TLS.xcworkspace -scheme TLS clean archive -sdk iphoneos -configuration Debug -UseModernBuildSystem=NO CODE_SIGNING_ALLOWED=NO
             
 
       
