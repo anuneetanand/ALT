@@ -33,7 +33,7 @@ jobs:
         run: cd App && cd ios && pod install
         
       - name: Build iOS (debug)
-        run: cd App && cd ios && xcodebuild -workspace TLS.xcworkspace -scheme TLS clean build -sdk iphoneos -configuration Debug
+        run: cd App && cd ios && xcodebuild -workspace TLS.xcworkspace -scheme TLS clean build -sdk iphoneos -configuration Debug CODE_SIGNING_ALLOWED=NO
             
 
       
