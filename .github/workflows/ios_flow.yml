@@ -1,6 +1,5 @@
 name: Build ios
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ ios-workflow ]
 jobs:
@@ -24,7 +23,7 @@ jobs:
       - name: Decode google-services.plist
         env: 
           IOS_DEV_SECRET: ${{secrets.IOS_DEV_SECRET}}
-        run: echo $IOS_DEV_SECRET > App/ios/GoogleServices-Info.plist
+        run: echo $IOS_DEV_SECRET > App/ios/TLS/GoogleServices-Info.plist
       
       - name: Install CoCoaPods
         run: cd App && cd ios && sudo gem install cocoapods
